@@ -31,41 +31,44 @@ class gomoku {
         white++;
         black = 0;
       }
-    }
-    if (black === 5) {
-      return "black";
-    } else if (white === 5) {
-      return "white";
+      if (black === 5) {
+        return "black";
+      } else if (white === 5) {
+        return "white";
+      }
     }
   }
   // 클릭된 좌표를 넣어서 배열로 풀기
   toOneDimensionalArr(col, row) {
-    const colArr = [];
-    const rowArr = [];
-    const toPlusDiagonalArr = [];
-    const toMinusDiagonalArr = [];
+    arr = [
+    ]
+
     for (let i = 0; i < this.col; i++) {
       // 가로 세로 방향 배열로 넣기 
       colArr.push(this.board[col][i]);
       rowArr.push(this.board[i][row]);
+
       // 대각선방향 
       //row 가 클 때
       if (col < row) {
         if(this.board[i][(row - col) + i] != undefined){
           toPlusDiagonalArr.push(this.board[i][(row - col) + i]);
         }
-        if(this.board[row + col - i][i] != undefined){
-          toMinusDiagonalArr.push(this.board[row + col - i][i])
+      } else { // col이 클 때 
+          if(this.board[(col - row) + i][i]) {
+            toPlusDiagonalArr.push(this.board[(col - row) + i][i]);
+          }
         }
-        // col이 클 때 
-      } else {
-        if(this.board[(col - row) + i][i]) {
-          toPlusDiagonalArr.push(this.board[(col - row) + i][i]);
-        }
-        if(this.board[14 - i][row - (14 - col) + i]) {
-          toMinusDiagonalArr.push(this.board[14 - i][row - (14 - col) + i])
+        // 대각선방향 
+        if ( row + col < 14) {
+          if (i <= row + col) {
+            toMinusDiagonalArr.push(this.board[row + col - i][i])
+          }
+        } else {
+          if(col - row + i <= 14) {
+            toMinusDiagonalArr.push(this.board[14 - i][row - (14 - col) + i])
+          }
         }
       }
     }
   }
-}
