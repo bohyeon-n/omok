@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "node-sass": "^4.9.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bohyeon-n/omok.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bohyeon-n/omok/issues"
+  },
+  "homepage": "https://github.com/bohyeon-n/omok#readme"
 }
